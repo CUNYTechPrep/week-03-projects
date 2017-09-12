@@ -17,9 +17,11 @@ npm install -g create-react-app
 
 http://ctp-zip-api.herokuapp.com/
 
-For these weeks projects we will be developing two simple applications, (1) the first app allows us to search for City names and details for a given zip code, and (2) the second app allows us to find all of Zip codes associated with a given City name.
+For this week's projects we will be developing two simple applications, (1) the first app allows us to search for City names and details for a given zip code, and (2) the second app allows us to find all of Zip codes associated with a given City name.
 
-### find Cities given a zipcode
+Below is a description of the relevant API endpoints for the projects:
+
+### `/zip/:zipcode` - find Cities associated with a zipcode
 
 `http://ctp-zip-api.herokuapp.com/zip/:zipcode`
 
@@ -27,7 +29,7 @@ provide the zipcode in the url and you will receive a JSON response with an arra
 
 http://ctp-zip-api.herokuapp.com/zip/10016
 
-### find Zip codes given a city name
+### `/city/:cityname` - find Zip Codes associated with a city name
 
 `http://ctp-zip-api.herokuapp.com/city/:cityname`
 
@@ -51,17 +53,23 @@ We will use the user input to search the ctp-zip-api. If the zip code is valid t
 
 ## Project 2: City Search app
 
+In this project we will allow the user to provide us a City name and we will display all of the associated zip codes to the user. 
+
+To get started run the following commands
+
 - `create-react-app city-search`
 - `cd city-search`
 - `npm start`
 
 At this point you should see the React hello world page running on your browser. You should leave it running in the background while you work on this project.
 
-Now open this folder (`city-search`) in your text editor, and begin developing the following app:
+Now open this folder (`city-search`) in your text editor. You will see all of the code the create-react-app setup for us. Since this is the stock project we can begin editing the files as we see fit. You can start at `App.js` and you can also edit `public/index.html` (to add Bootstrap for example).
 
 Using the same API as project 1, we will build a City search app, where given a city name, we will display all returned zip codes.
 
 ### Tasks
+
+Using the same ctp-zip-api we used in project 1:
 
 - Implement a City Search field that takes city names
     + it should allow city names to be entered in upper, lower, or mixed case letters
@@ -71,5 +79,6 @@ Using the same API as project 1, we will build a City search app, where given a 
 
 - Display all states where the city was found in the API
 - Group received zip codes by state
+- Display city details for each Zip code
 
-> Note: these will require additional fetch call to the API.
+> Note: these will require additional fetch call to the API. Feel free to use your own CSS styles and to add any additional features you want.
