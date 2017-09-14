@@ -23,3 +23,39 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.input-field {
+  text-align: center;
+  margin: 15px 15px;
+}
+
+.input-box-text {
+  width: 100px;
+}
+
+.no-result {
+  text-align: center;
+}
+
+.user-field {
+  display: flex;
+}
+
+.search-type-button {
+  height: 35px;
+  width: 150px;
+  margin: 10px 0px 0px 5px;
+}
+
+.zip-table {
+  display: block;
+}
+
+.slot {
+  text-align: center;
+  background: #DDDDDD;
+  width: 150px;
+  height: 45px;
+  padding-top: 13px;
+  margin-left: 5px;
+}
