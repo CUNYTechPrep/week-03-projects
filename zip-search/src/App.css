@@ -23,3 +23,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+#test {
+  border: 1px solid red;
+}
