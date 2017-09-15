@@ -57,9 +57,6 @@ class App extends Component {
 
   zipCodeSearch(event) {
     const zip = event.target.value;
-    this.setState({
-      zipCode: zip
-    });
     if(zip.length === 5) {
       fetch('http://ctp-zip-api.herokuapp.com/zip/' + zip)
         .then(response => {
@@ -77,6 +74,9 @@ class App extends Component {
           });
         });
     }
+    this.setState({
+      zipCode: zip
+    });
   }
 
   render() {
