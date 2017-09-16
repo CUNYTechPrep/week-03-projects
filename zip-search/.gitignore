@@ -2,6 +2,9 @@
 
 # dependencies
 /node_modules
+/docs
+/bin
+/static
 
 # testing
 /coverage

@@ -1,5 +1,11 @@
 # Week 3 In-class projects
 
+## ASSIGMENT DEMO
+
+[ZIPCITY](https://github.com/enzoames/week-03-projects/blob/master/cityzipdemo.gif)
+
+![Alt text](https://github.com/enzoames/week-03-projects/blob/master/cityzipdemo.gif)
+
 ## Installing `create-react-app`
 
 The `create-react-app` utility helps you create new React projects easily. It handles generating a project, setting up babel, a dev server, and testing. It is the fastest way to get started developing react apps locally.
