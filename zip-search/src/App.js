@@ -82,7 +82,9 @@ class App extends Component {
         </div>
         <ZipSearchField changeHandler={this.zipCodeChanged} />
         <div className="container" >
-          {this.state.cities}
+          {(this.state.cities.length !== 0)? this.state.cities : (<div className="row">
+                <div className="col-lg-4 col-lg-offset-4 text-center"><strong>No Results</strong></div>
+                </div>)}
         </div>
       </div>
     );
