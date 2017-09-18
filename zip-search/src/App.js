@@ -73,10 +73,10 @@ class App extends Component {
           }
           /*
             if we were to just return response.json() here
-            then an exception would be thrown and the
-            catch() function below would execute. The exception
-            occurs because the API does not return a json body
-            when a 404 occurs.
+            then an exception will be thrown if there is an 
+            error, and the catch() function below would execute.
+            The exception occurs because the API does not return 
+            a proper json body when a 404 occurs.
           */
         })
         .then((jsonResponse) => {
