@@ -12,7 +12,10 @@ function City(props) {
         </div>
         <div className="panel-body">
           <ul>
+            <li>State: {props.data.State}</li>
+            <li>Location: ({props.data.Lat}, {props.data.Long})</li>
             <li>Estimated Population: {props.data.EstimatedPopulation}</li>
+            <li>Total Wages: {props.data.TotalWages}</li>
           </ul>
         </div>
       </div>
@@ -22,9 +25,13 @@ function City(props) {
 
 function ZipSearchField(props) {
   return (
-    <div>
-      <label>Zip Code:</label>
-      <input type="text" onChange={props.handleChange} value={props.value}/>
+    <div className="container">
+      <div className="row">
+        <div className="col-xs-6 col-xs-offset-4">
+          <label>Zip Code:</label>
+          <input type="text" onChange={props.handleChange} value={props.value}/>
+        </div>
+      </div>
     </div>
   );
 }
