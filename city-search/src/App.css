@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.Cities{
+  text-align: center;
+  border: 1px solid #111111;
+  width: 33%;
+  margin-left: 33%;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+.Cities h1{
+  width: 100%;
+  margin: 0 0 0 0;
+  background-color: #AAAAAA;
+  border-radius: 15px;
+}
