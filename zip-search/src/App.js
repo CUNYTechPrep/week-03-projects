@@ -27,7 +27,6 @@ function ZipSearchField(props) {
   );
 }
 
-
 class App extends Component {
   constructor() {
     super();
@@ -85,7 +84,7 @@ class App extends Component {
   }
 
   render() {
-    const buttonText = (this.state.searchType === 0) ? "Search by City" : "Search by Zip-Code";
+    const buttonText = (this.state.searchType === 0) ? "Search by City for Zip-Codes" : "Search by Zip-Code for Cities";
     const labelText = (this.state.searchType === 0) ? "Zip Code: " : "City Name: ";
     return (
       <div className="App">
