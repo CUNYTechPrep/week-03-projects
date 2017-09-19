@@ -60,7 +60,7 @@ class App extends Component {
       .then((jsonBody) => {     //jsonBody is array
         console.log(jsonBody);
 
-        const zipComps = jsonBody.map((zip) => <City key={zip} value={zip} />)  //create punch of citis tag from the city array and pass entire city to the data
+        const zipComps = jsonBody.map((zip) => <City key={zip} value={zip} />)  
 
         this.setState(
         {
