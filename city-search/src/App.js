@@ -15,6 +15,7 @@ function CitySearchField(props){
   return(
     <div>
       <label>City: </label>
+      <br/>
       <input type="text" onChange={props.handleChange} value={props.value} />
     </div>
 
@@ -83,17 +84,20 @@ class App extends Component {
         <CitySearchField value={this.city} handleChange={this.cityChanged} />
         </div>
         <br/>
-        <div className="panel panel-default">
-          <div className="panel-heading">
-            {this.state.city}
+        <div className="container-fluid">
+          <div className = "row">
+            <div className = "col-sm-6 col-sm-offset-3">
+              <div className="panel panel-default">
+                <div className="panel-heading">
+                  {this.state.city}
+                </div>
+                <div className = "panel-body">             
+                    {this.state.zipList}           
+                </div>
+               </div>
+              </div> 
           </div>
-          <br/>
-          <div className = "panel-body">
-             
-              {this.state.zipList}
-            
-         </div>
-        </div>  
+        </div> 
       </div>
     );
   }
