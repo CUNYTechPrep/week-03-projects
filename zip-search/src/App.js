@@ -1,67 +1,103 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 
 function City(props) {
-  return (<div></div>);
-  <div className="panel panel-default">
-    <div className="panel-heading"> 
-      {props.data.City}
+  return (
+    <div className="row">
+      <div className="col-xs-12">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">{props.data.LocationText}</h3>
+          </div>
+          <div className="panel-body">
+            <ul>
+              <li>State: {props.data.State}</li>
+              <li>Location: ({props.data.Lat}, {props.data.Long})</li>
+              <li>Population (estimated): {props.data.EstimatedPopulation}</li>
+              <li>Total Wages: {props.data.TotalWages}</li>
+              {/* You can add any other data points you want here */}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div className="panel-body">
-      Info about City
-    </div>
-  </div>
-}
-
-function zipAdded(event){
-    console.log("helloooooooooooooo");
+  );
 }
 
 function ZipSearchField(props) {
   return (
-    <div className="row text-center">  
-      <label> Zipcode: </label>
-      <input type="text" value={props.value} onChange={props.handleChange}/>
+    <div className="row">
+      <div className="col-xs-12 form-inline">
+        <label htmlFor="zip">Zip Code: </label>
+        <input
+          type="text"
+          id="zip"
+          className="form-control"
+          value={props.zipValue}
+          onChange={props.handleChange}
+          placeholder="Try 10016" />
+      </div>
     </div>
   );
 }
+
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      zipCode: "",
-      cities: []
-    };
-    // this is done because e6 does the weird thing with the this so must include the bind at the end of constructor
-    this.zipChanged = this.zipChanged.bind(this);
-  }
-  zipChanged(event){
-    const zip = event.target.value;
-    this.setState({
-      zipCode: zip
-    });
+      zipValue: "",
+      cities: [],
+    }
 
-    //fetch time only if you have the 5 numbers. the fetch returns a promise(IOU); you have to send it back so that it works 
-    if (zip.length === 5){
-      fetch("http://ctp-zip-api.herokuapp.com/zip/" + zip)
-      // this is going to return the json data. RN should be checking the status code
+    // Don't forget to bind the event handler
+    this.zipValueChanged = this.zipValueChanged.bind(this);
+  }
+
+  zipValueChanged(event) {
+    const zip = event.target.value;
+
+    this.setState({
+      zipValue: zip,
+    })
+
+    if(zip.length === 5) {
+      fetch('http://ctp-zip-api.herokuapp.com/zip/'+zip)
         .then((response) => {
-          // decode json and when its decode its going to send back the json data
-          return response.json();
+          if(response.ok) {
+            return response.json();
+          } else {
+            return [];
+          }
+          /*
+            if we were to just return response.json() here
+            then an exception would be thrown and the
+            catch() function below would execute. The exception
+            occurs because the API does not return a json body
+            when a 404 occurs.
+          */
         })
-        .then((jsonData) => {
-          //console.log(jsonData);
-          // map looks at elements in an array it transforms it
-          const cities = jsonData.map((obj) => <City data={obj} />);
-          // dont call it all the time prepare it first then call set state
+        .then((jsonResponse) => {
+          const cities = jsonResponse.map((city) => {
+            return <City data={city} key={city.RecordNumber} />;
+          });
+
           this.setState({
-            cities: cities
-          })
+            cities: cities,
+          });
+        })
+        .catch((e) => {
+          this.setState({
+            cities: [],
+          });
+          console.log("In catch: " + e);
         });
+    } else {
+      this.setState({
+        cities: [],
+      });
     }
   }
 
@@ -71,9 +107,16 @@ class App extends Component {
         <div className="App-header">
           <h2>Zip Code Search</h2>
         </div>
-        <ZipSearchField value={this.state.zipCode} handleChange={this.zipChanged}/>
-        <div>
-          {this.state.cities}
+        <div className="container-fluid">
+          <div className="row">
+            {/* the following classes centers the 6 columns */}
+            <div className="col-sm-6 col-sm-offset-3">
+              <ZipSearchField
+                zipValue={this.state.zipValue}
+                handleChange={this.zipValueChanged} />
+              {this.state.cities.length > 0 ? this.state.cities : <div>No Results</div>}
+            </div>
+          </div>
         </div>
       </div>
     );
