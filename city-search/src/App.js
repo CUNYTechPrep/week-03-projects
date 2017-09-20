@@ -17,7 +17,6 @@ function CitySearchField(props) {
         <label>City Name: </label> 
         <input
           type="text"
-          id="zip" 
           value={props.cityName}
           onChange={props.handleChange}
           placeholder="Try NY" />
