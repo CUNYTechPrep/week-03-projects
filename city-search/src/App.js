@@ -3,31 +3,21 @@ import logo from './logo.svg';
 import './App.css';
 
 
-function City(props) {
+function Zip(props) {
   return (
     <div className="panel panel-default">
       <div className="panel-heading">
         {props.data.City}
       </div>
       <div className="panel-body">
-       <ul>
-        for (var i in data) {
-          <li>
-          {props.data.i};
-          </li>
-        }
-        
-        <li>Estimated Population: {props.data.EstimatedPopulation}
-        </li>
-        
-       </ul>
+       {props.data}
       </div>
     </div>);
 }
 
-function ZipSearchField(props) {
+function CitySearchField(props) {
   return (<div>
-    <label>Zip Code</label>
+    <label>City</label>
     <input type="text" onChange={props.handleChange} value={props.value}/>
   </div>);
 }
@@ -37,28 +27,28 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      zipCode: "",
-      cities: []
+      city: "",
+      zipCodes: []
     };
 
-    this.zipCodeChanged = this.zipCodeChanged.bind(this);
+    this.cityCodeChanged = this.cityCodeChanged.bind(this);
   }
 
-  zipCodeChanged(event){
-    const zip = event.target.value;
+  cityCodeChanged(event){
+    let city = event.target.value;
 
-    if (zip.length === 5) {
-    fetch('http://ctp-zip-api.herokuapp.com/zip/' + zip)
+    if (city.length >= 5) {
+    fetch('http://ctp-zip-api.herokuapp.com/city/' + city.toUpperCase())
       .then((response) => {
         return response.json();
       })
       .then((jsonBody) => {
         console.log(jsonBody);
 
-        const cityComps = jsonBody.map((c) => <City data={c}/>);
+        const zipComps = jsonBody.map((c) => <Zip data={c}/>);
 
         this.setState({
-          cities: cityComps
+          zipCodes: zipComps
         })
       })
       .catch((err) => {
@@ -67,7 +57,7 @@ class App extends Component {
     };
 
     this.setState({
-      zipCode: zip
+      city: city
     })
   }
 
@@ -76,11 +66,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Zip Code Search</h2>
+          <h2>City Code Search</h2>
         </div>
-        <ZipSearchField handleChange={this.zipCodeChanged} value={this.state.zipCode} />
+        <CitySearchField handleChange={this.cityCodeChanged} value={this.state.city} />
         <div>
-          {this.state.cities}
+          {this.state.zipCodes}
         </div>
       </div>
     );
