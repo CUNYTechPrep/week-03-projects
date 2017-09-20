@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-
 function City(props) {
   const d = props.data;
   return (
@@ -22,40 +21,50 @@ function City(props) {
   );
 }
 
-function ZipSearchField(props) {
+function Zip(props) {
+  const d = props.data;
+  return (
+    <div className="panel panel-default">
+      <div className="panel-body">
+        {d}
+      </div>
+    </div>
+  );
+}
+
+function CitySearchField(props) {
   return (
     <div className="text-center">
-      <label>Zip Code: </label>
-      <input type="number" onChange={props.handleChange} name={props.value} />
+      <label>City: </label>
+      <input type="text" onChange={props.handleChange} name={props.value} />
     </div>
   );
 }
 
 class App extends Component {
-
   constructor() {
     super();
     this.state = {
       input: "",
       output: [],
     }
-    this.zipChanged = this.zipChanged.bind(this);
+    this.cityChanged = this.cityChanged.bind(this);
   }
 
-  zipChanged(event) {
-    const input = event.target.value;
+  cityChanged(event) {
+    const input = event.target.value.toUpperCase();
     this.setState({
       input: input,
     });
 
-    if(input.length === 5) {
-      fetch("http://ctp-zip-api.herokuapp.com/zip/"+input)
+    if(input.length > 0) {
+      fetch("http://ctp-zip-api.herokuapp.com/city/"+input)
       .then((response) => {
         return response.json();
       })
       .then((jsonData) => {
-        const output = jsonData.map(c => {
-          return <City data={c} />;
+        const output = jsonData.map(z => {
+          return <Zip data={z} />;
         });
         this.setState({
           input: input,
@@ -69,10 +78,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Zip Code Search</h2>
+          <h2>City Search</h2>
         </div>
         <div>
-          <ZipSearchField handleChange={this.zipChanged} value={this.state.input}/>
+          <CitySearchField handleChange={this.cityChanged} value={this.state.input}/>
         </div>
         <div>{this.state.output}</div>
       </div>
