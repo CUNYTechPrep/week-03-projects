@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 
 
-function City(props) {
+function ZipCode(props) {
   return (
     <div className="row">
       <div className="col-xs-12">
         <div className="panel panel-default">
           <div className="panel-heading">
-            <h3 className="panel-title">{props.data.LocationText}</h3>
+            <h3 className="panel-title"></h3>
           </div>
           <div className="panel-body">
             <ul>
-              <li>State: {props.data.State}</li>
-              <li>Location: ({props.data.Lat}, {props.data.Long})</li>
-              <li>Population (estimated): {props.data.EstimatedPopulation}</li>
-              <li>Total Wages: {props.data.TotalWages}</li>
+              <span>{props.data}</span> 
             </ul>
           </div>
         </div>
@@ -29,8 +26,8 @@ function SearchField(props) {
     <div className="row">
       <div className="col-xs-12">
         <form>
-        <label> Zip Code: </label>
-        <input type="text" value={props.zipCode} onChange={props.handleChange} placeholder="Try 10016" />
+        <label> City: </label>
+        <input type="text" value={props.city} onChange={props.handleChange} placeholder="Try Springfield" />
         </form>
       </div>
     </div>
@@ -43,8 +40,8 @@ class App extends Component {
   constructor() {
     super();//call component constructor
     this.state = {
-      zipCode: "",
-      cities: [],
+      city: "",
+      zipCodes: [],
     }
 
     //bind event handler
@@ -52,15 +49,14 @@ class App extends Component {
   }
 
   handleChange(event) {
-    const zipInput = event.target.value;  //value of search field on change
+    const cityInput = event.target.value.toUpperCase();  //value of search field on change. 
 
     this.setState({
-      zipCode: zipInput,
+      city: cityInput,
     })
 
     //only fetch url if 5 digit zip code
-    if(zipInput.length === 5) {
-      fetch('http://ctp-zip-api.herokuapp.com/zip/'+zipInput)
+      fetch('http://ctp-zip-api.herokuapp.com/city/'+cityInput)
         .then((response) => {
           if(response.ok) {
             return response.json(); //return json if there are no issues
@@ -69,39 +65,34 @@ class App extends Component {
           }
         })
         .then((json) => {
-          const cities = json.map((city) => {
-            return <City data={city} key = {city.RecordNumber}/>;  //return City component, set data to each city and key to unique identifier in json data(record number)
+          const zipArray = json.map((zips) => {
+            return <ZipCode data={zips}/>; 
           });
 
-          //populate cities array after mapping json above
           this.setState({
-            cities: cities,
+            zipCodes: zipArray,
           });
         })
         .catch((ex) => {
           this.setState({
-            cities: [],
+            zipCodes: [],
           });
           console.log("Error in catch " + ex);
         });
-    } else {
-      this.setState({
-        cities: [],
-      });
-    }
-  }
+
+}
 
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Zip Code Search</h2>
+          <h2>City Search</h2>
         </div>
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-6 col-sm-3">
-              <SearchField zipCode={this.state.zipCode} handleChange={this.handleChange} /> 
-              { this.state.cities }
+              <SearchField city={this.state.city} handleChange={this.handleChange} /> 
+              { this.state.zipCodes }
             </div>
           </div>
         </div>
