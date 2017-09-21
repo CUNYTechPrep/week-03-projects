@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+h1 {
+	background-color: black;
+	color: white;
+	padding: 16px;
+}
+
+#zip-code {
+	font-weight: bold;
+}
