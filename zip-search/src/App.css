@@ -23,3 +23,35 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+#zip-entry * {
+	width: max-content;
+}
+
+#search {
+	margin: auto;
+	width: max-content;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+}
+
+.city {
+	border: 1px hsl(0, 0%, 90%) solid;
+	border-radius: .5rem;
+	width: 40rem;
+	margin-bottom: 2rem;
+}
+
+.result-header {
+	border-bottom: 1px hsl(0, 0%, 90%) solid;
+	border-radius: .5rem .5rem 0rem 0rem;
+	background-color: hsl(0, 0%, 93%);
+	font-weight: 600;
+	padding: 1rem;
+}
+
+.result-body {
+	padding: 1rem;
+}
