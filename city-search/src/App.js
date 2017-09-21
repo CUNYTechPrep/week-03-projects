@@ -32,22 +32,16 @@ class App extends Component {
       city: "",
       zipCodes: [],
     }
-
-    // Don't forget to bind the event handler
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    // Get value and store it in cityName
     const cityName = event.target.value.toUpperCase();
-
-    // set state of city to cityName uppercase
     this.setState({
       city: cityName,
     })
 
     fetch('http://ctp-zip-api.herokuapp.com/city/'+cityName)
-    // check to make sure response is a json file
     .then((response) => {
       if(response.ok) {
         return response.json();
@@ -56,7 +50,6 @@ class App extends Component {
       }
     })
     .then((jsonResponse) => {
-      // store the zip code from the jsonResponse into a variable and then put it into the array of zipCodes as well as call Zip to display it
       const zips = jsonResponse.map((z) => { return <Zip data={z} />});
 
       this.setState({
@@ -75,7 +68,7 @@ class App extends Component {
 
         <div className="container-fluid">
           <div className="row">
-            {/* the following classes centers the 6 columns */}
+            {}
             <div className="col-sm-6 col-sm-offset-3">
               <CitySearchField 
                 handleChange={this.handleChange} />
