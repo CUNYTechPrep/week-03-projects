@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 
@@ -49,7 +48,7 @@ class App extends Component {
       zipCode: zip
     });
 
-    if (zip.length == 5) {
+    if (zip.length === 5) {
       fetch("http://ctp-zip-api.herokuapp.com/zip/" + zip).then((response) => {
         return response.json();
       }).then((json) => {
