@@ -35,5 +35,12 @@
   margin-top: 15px;
   margin-left: auto;
   margin-right: auto;
-  width: 350px;
+  width: 70px;
+}
+
+.zipCodeHeader {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
 }
