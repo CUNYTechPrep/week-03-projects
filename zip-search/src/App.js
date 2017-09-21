@@ -59,31 +59,56 @@ function City(props) {
 	);
 }
 
+// Props:
+// - onEnter: A function to run when the enter key is pressed.
+// - name: The name of the element, if it is part of a form.
+// - placeholder: Placeholder text for the input.
+// - className: Passed through to the underlying input.
+class SearchField extends Component {
+	constructor(props) {
+		super(props);
+		this.handleEnter = this.handleEnter.bind(this);
+		if (props.onEnter) {
+			this.onEnter = props.onEnter;
+		}
+	}
+	handleEnter(event) {
+		if (event.charCode !== 13) return;
+		if (this.onEnter) this.onEnter();
+	}
+	render() {
+		return (
+			<input
+				name={this.props.name}
+				placeholder={this.props.placeholder}
+				onKeyPress={this.handleEnter}
+				className={this.props.className}
+				/>
+		);
+	}
+}
+
 function ZipSearchField(props) {
-	let showResults = ((e) => {
-		//console.log("The event is:", e.charCode);
-		if (e.charCode !== 13) return;
-		//console.log("It's happening!");
+	let showResults = () => {
 		let zip = document.querySelector('input').value;
-		//console.log(`Zip code: ${zip}`);
-		//console.log(props.showResults);
 		getResults(zip)
 			.then(props.showResults)
-	})
+	}
   return (
 		<div className="form-horizontal">
 			<div id="zip-entry" className="form-group">
 				<label htmlFor="zip">Zip Code:</label>
-				<input 
+				<SearchField
 					name="zip" 
 					placeholder="Zip Code..."
-					onKeyPress={showResults}
+					onEnter={showResults}
 					className="form-control"
 					/>
 			</div>
 		</div>
 	);
 }
+
 
 function getResults(zip) {
 	let url = "http://ctp-zip-api.herokuapp.com/zip/";
@@ -100,7 +125,6 @@ function getResults(zip) {
 			})
 	);
 }
-
 
 class App extends Component {
 	constructor(props) {

@@ -27,9 +27,6 @@ function ZipCode(zipcode) {
 
 // Props:
 // - onEnter: A function to run when the enter key is pressed.
-// - name: The name of the element, if it is part of a form.
-// - placeholder: Placeholder text for the input.
-// - className: Passed through to the underlying input.
 class SearchField extends Component {
 	constructor(props) {
 		super(props);
@@ -43,12 +40,12 @@ class SearchField extends Component {
 		if (this.onEnter) this.onEnter();
 	}
 	render() {
+		const { props.onEnter, ...otherProps } = this.props;
 		return (
 			<input
-				name={this.props.name}
-				placeholder={this.props.placeholder}
 				onKeyPress={this.handleEnter}
-				className={this.props.className}
+				// Pass through the rest of the props.
+				{...otherProps}
 				/>
 		);
 	}
