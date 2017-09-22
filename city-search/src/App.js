@@ -11,7 +11,7 @@ function City(props) {
       </div>
       <div className = "panel-body">
         <ul>
-          <li>Est. Population: {props.data.EstimatedPopulation}</li>
+          <li>Zip Code: {props.data}</li>
         </ul>
       </div>
     </div>);
@@ -22,7 +22,7 @@ function ZipSearchField(props) {
     <div>
       <label>Zip Code:</label>
       <input type="Text" onChange={props.handleChange} 
-        value = {props.value} placeholder = "Try 10016" />
+        value = {props.value} placeholder = "Try NYC" />
     </div>
     );
 }
@@ -42,8 +42,9 @@ class App extends Component {
   zipCodeChanged(event){
     const zip = event.target.value;
 
-    if(zip.length === 5){
-      fetch('http://ctp-zip-api.herokuapp.com/zip/' + zip)
+    if(zip.length >= 3){
+      let zipUpper = zip.toUpperCase();
+      fetch('http://ctp-zip-api.herokuapp.com/city/' + zipUpper)
         .then((response) => {
           return response.json();
         })
