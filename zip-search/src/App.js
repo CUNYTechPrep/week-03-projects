@@ -72,8 +72,10 @@ class App extends Component {
                 <div className="App-header">
                     <h2>Zip Code Search</h2>
                 </div>
-                <div className="center">
-                    <ZipSearchField handleChange={this.zipCodeChanged} value={this.state.zipCode}/>                    
+                <div className="container">
+                    <div className="col-md-6">
+                        <ZipSearchField handleChange={this.zipCodeChanged} value={this.state.zipCode}/>                    
+                    </div>
                 </div>
                 <div>
                     { this.state.cities.length===0 ? (<p> No Results</p>): this.state.cities}
