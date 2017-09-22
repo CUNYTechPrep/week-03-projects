@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 
-
-function City(props) {
+function ZipCode(props) {
   return (
     <div className="row">
       <div className="col-xs-12">
@@ -12,10 +12,8 @@ function City(props) {
           </div>
           <div className="panel-body">
             <ul>
-              <li>State: {props.data.State}</li>
-              <li>Location: ({props.data.Lat}, {props.data.Long})</li>
-              <li>Population (estimated): {props.data.EstimatedPopulation}</li>
-              <li>Total Wages: {props.data.TotalWages}</li>
+              <li>{props.data}</li>  
+              
               {/* You can add any other data points you want here */}
             </ul>
           </div>
@@ -25,46 +23,42 @@ function City(props) {
   );
 }
 
-function ZipSearchField(props) {
+function CitySearchField(props) {
   return (
     <div className="row">
       <div className="col-xs-12 form-inline">
-        <label htmlFor="zip">Zip Code: </label>
+        <label htmlFor="city">City: </label>
         <input
           type="text"
-          id="zip"
+          id="city"
           className="form-control"
-          value={props.zipValue}
+          value={props.cities}
           onChange={props.handleChange}
-          placeholder="Try 10016" />
+          placeholder="Try Brooklyn" />
       </div>
     </div>
   );
 }
-
-
-
 class App extends Component {
-  constructor() {
+  constructor(){
     super();
     this.state = {
-      zipValue: "",
-      cities: [],
+      cities: "",
+      zipValue : [],
     }
+    this.cityValueChanged = this.cityValueChanged.bind(this);
+  } 
+  
 
-    // Don't forget to bind the event handler
-    this.zipValueChanged = this.zipValueChanged.bind(this);
-  }
-
-  zipValueChanged(event) {
-    const zip = event.target.value;
+  cityValueChanged(event) {
+    const city = event.target.value;
 
     this.setState({
-      zipValue: zip,
+      cities: city,
     })
-
-    if(zip.length === 5) {
-      fetch('http://ctp-zip-api.herokuapp.com/zip/'+zip)
+        const cityupper = city.toUpperCase();
+        if(city.length > 0){
+        fetch('http://ctp-zip-api.herokuapp.com/city/'+ cityupper)
         .then((response) => {
           if(response.ok) {
             return response.json();
@@ -80,41 +74,41 @@ class App extends Component {
           */
         })
         .then((jsonResponse) => {
-          const cities = jsonResponse.map((city) => {
-            return <City data={city} key={city.RecordNumber} />;
+          const zips = jsonResponse.map((zip) => {
+            return <ZipCode data={zip} />;
           });
 
           this.setState({
-            cities: cities,
+            zipValue: zips,
           });
         })
         .catch((e) => {
           this.setState({
-            cities: [],
+            ZipValue: [],
           });
           console.log("In catch: " + e);
         });
-    } else {
+     }
+     else {
       this.setState({
-        cities: [],
+        zip:[],
       });
-    }
+     }
   }
-
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Zip Code Search</h2>
+          <h2>City Search</h2>
         </div>
         <div className="container-fluid">
           <div className="row">
             {/* the following classes centers the 6 columns */}
             <div className="col-sm-6 col-sm-offset-3">
-              <ZipSearchField
-                zipValue={this.state.zipValue}
-                handleChange={this.zipValueChanged} />
-              {this.state.cities.length > 0 ? this.state.cities : <div>No Results</div>}
+              <CitySearchField
+                cities={this.state.cities}
+                handleChange={this.cityValueChanged} />
+              {this.state.zipValue.length > 0 ? this.state.zipValue : <div>No Results</div>}
             </div>
           </div>
         </div>
