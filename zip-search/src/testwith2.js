@@ -33,14 +33,17 @@ class App extends Component {
     super();
     this.state = {
       zipCode: '',
-      cities: []
+      cities: [],
+      city: '',
+      zipCodes: []
     }
 
     this.zipCodeChanged = this.zipCodeChanged.bind(this);
+    this.searchFieldCodeChanged = this.searchFieldChanged.bind(this);
   }
 
-  zipCodeChanged(event){
-    const zip = event.target.value;
+  zipCodeChanged(zips){
+    const zip = zips;
 
     if(zip.length === 5){
       fetch('http://ctp-zip-api.herokuapp.com/zip/'+zip)
@@ -62,6 +65,44 @@ class App extends Component {
     })
   }
 
+  cityChanged(event){
+    const cit = event.target.value;
+
+    https://ctp-zip-api.herokuapp.com/city/
+
+      fetch('https://ctp-zip-api.herokuapp.com/city/'+cit)
+        .then( (response) => {
+          return response.json();
+        })
+        .then((jsonBody) => {
+          console.log(jsonBody);
+
+          //city components being built by the jsonBody
+          const zipComps = jsonBody.map( (c) => <City data={c} />);
+          this.setState({
+            zipCodes: zipComps
+          });
+        });
+    
+    this.setState({
+      city: cit
+    })
+  }
+
+  searchFieldChanged(event){
+    const change = event.target.value;
+
+    
+      if(change.length === 5)
+        this.zipCodeChanged(change);
+    
+    if(typeof change[0] === 'string'){
+
+    }
+
+
+  }
+
   
 
   render() {
@@ -70,7 +111,7 @@ class App extends Component {
         <div className="App-header">
           <h2>Zip Code Search</h2>
         </div>
-        <ZipSearchField handleChange={this.zipCodeChanged} value={this.zipCode} />
+        <ZipSearchField handleChange={this.searchFieldChanged} value={this.zipCode} />
         <div>
           {this.state.cities}
         </div>
