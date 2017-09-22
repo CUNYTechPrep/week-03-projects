@@ -4,8 +4,8 @@ import './App.css';
 
 function City(props) {
   return (
-    <div className="row col-md-4  col-md-offset-4">
-      <div className="panel panel-default text-left">
+    <div className="row col-md-10  col-md-offset-1">
+      <div className="panel panel-default">
         <div className="panel-heading">
           {props.values.LocationText}
         </div>
@@ -23,15 +23,12 @@ function City(props) {
 }
 
 class CityList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (this.props.cities.length > 0) {
       let cityList = this.props.cities.map((city, i) => {
+        console.log(city);
         return (
-          <City key={i} values={city} />
+          <City key={[city.RecordNumber]} values={city} />
         );
       });
       return (
@@ -46,28 +43,29 @@ class CityList extends Component {
 }
 
 class StateList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     console.log("Recreating StateList");
+    console.log("Length: " + Object.keys(this.props.states).length);
     if (Object.keys(this.props.states).length > 0) {
-      console.log(Object.values(this.props.states));  
-        /*
+//      console.log(Object.values(this.props.states)); 
+       let stateList = Object.entries(this.props.states).map((state, i) => {
+        console.log(state);
         return (
-          <div clasName="panel panel-default">
-            <div className="panel-heading">
-
-            </div>
-            <div className="panel-body">
+          <div key={state[0]} className="row col-md-6 col-md-offset-3">
+            <div className="panel panel-default text-left">
+              <div className="panel-heading">
+                {state[0]}
+              </div>
+              <div className="panel-body">
+                <CityList cities={state[1]} />
+              </div>
             </div>
           </div>
         );
-        */
-
+      });
       return (
         <div>
+          {stateList}
         </div>
       );
     } else {
@@ -77,10 +75,6 @@ class StateList extends Component {
 }
 
 class CitySearchField extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>
@@ -105,8 +99,8 @@ class App extends Component {
   }
 
   handleChange(evt) {
-    const city =  evt.target.value.toUpperCase();
-    const cityURL = `http://ctp-zip-api.herokuapp.com/city/${city}`;
+    const city =  evt.target.value;
+    const cityURL = `http://ctp-zip-api.herokuapp.com/city/${city.toUpperCase()}`;
     const stateZipcodeMap = {}; // contains the mapping from the state to an array of zipcodes
 
     fetch(cityURL)
@@ -116,30 +110,26 @@ class App extends Component {
           if the zipcode's state is not in stateZipcodeMap, add it 
           then push it into the array
         */
-        console.log("fetched zipcodes");
+        console.log("Length of zipcodeArray: ", zipcodeArray.length);
         zipcodeArray.forEach(zipcode => {
           const zipURL = `http://ctp-zip-api.herokuapp.com/zip/${zipcode}`;
           fetch(zipURL)
             .then(response => response.json())
             .then(cities => {
-              cities.forEach(city => {
-                if (!stateZipcodeMap.hasOwnProperty(city.State)) {
-                  stateZipcodeMap[city.State] = [];
+              cities.forEach(cityEle => {
+                if (cityEle.City.toUpperCase() === city.toUpperCase()) {
+                  if (!stateZipcodeMap.hasOwnProperty(cityEle.State)) {
+                    stateZipcodeMap[cityEle.State] = [];
+                  }
+                  stateZipcodeMap[cityEle.State].push(cityEle);
                 }
-                stateZipcodeMap[city.State].push(city);
-                console.log(stateZipcodeMap[city.State]);
               });
-            })
-            .then(
-              this.setState({
-                city: evt.target.value,
-                stateZipcodeMap: stateZipcodeMap
-              })
-            );
+              this.setState({ city, stateZipcodeMap });
+            })            
         });
       })
-      .catch(function(ex) {
-        console.log(ex);
+      .catch((error) => {
+        console.log("error");
       });
   }
 
@@ -150,10 +140,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
           <CitySearchField onChange={this.handleChange} />
-          <StateList states={this.state.stateZipcodeMap} />
-        </p>
+          <StateList states={this.state.stateZipcodeMap} /> 
       </div>
     );
   }
