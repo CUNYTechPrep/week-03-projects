@@ -81,7 +81,7 @@ class App extends Component {
         })
         .then((jsonResponse) => {
           const cities = jsonResponse.map((city) => {
-            return <City data={city} key={city.RecordNumber} />;
+            return <City var data={city} key={city.RecordNumber} />;
           });
 
           this.setState({
