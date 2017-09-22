@@ -50,6 +50,15 @@ We will use the user input to search the ctp-zip-api. If the zip code is valid t
 
 ![Display City Results](zip-search-2.png)
 
+### Getting started
+
+- Fork this repo and clone your fork
+- `cd week-03-projects/zip-search`
+- `npm install`
+- `npm start`
+
+`npm start` will launch a React dev server and should automatically open your browser. Leave the dev server running in the background and edit your code. When you save your changes you should notice your browser automatically reload to show you your new content or errors if any.
+
 
 ## Project 2: City Search app
 
