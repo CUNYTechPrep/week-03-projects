@@ -3,17 +3,7 @@ import './App.css';
 
 function ZipCodeTag(props) {
   return (
-    <div className="row">
-      <div className="col-xs-12">
-        <div className="panel panel-default">
-          <div className="panel-body">
-            <ul>
               <li key={props.key}>{props.data}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -96,7 +86,17 @@ class App extends Component {
               <CitySearchField
                 cityName={this.state.cityName}
                 handleChange={this.cityNameChange} />
-              {this.state.zips.length > 0 ? this.state.zips : <div>No Results</div>}
+                <div className="row">
+                    <div className="col-xs-12">
+                        <div className="panel panel-default">
+                            <div className="panel-body">
+                                <ul>
+                                    {this.state.zips.length > 0 ? this.state.zips : <div>No Results</div>}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
