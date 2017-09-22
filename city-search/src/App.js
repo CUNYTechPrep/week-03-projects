@@ -49,11 +49,38 @@ class App extends Component {
       states: [],
       statesWithZipcode: []
     }
+    this.getState = this.getState.bind(this);
     this.cityNameChanges = this.cityNameChanges.bind(this);
   }
 
+  getState() {
+    var stateSet = new Set();
+
+    this.state.zipCodes.forEach((zipc) => {
+      fetch('https://ctp-zip-api.herokuapp.com/zip/' + zipc.props.data)
+      .then((response) => {
+        return response.json();
+      })
+      .then((jsonBody) => {
+        var cityInfo = jsonBody;
+        cityInfo.forEach((city) => {
+          if(city["City"] == this.state.cityName){
+            stateSet.add(city["State"]);
+          }
+        })
+        this.setState({
+          states: Array.from(stateSet).map((s) => <States data={s}/>)
+        })
+      })
+    });
+  }
+
   cityNameChanges(event) {
+    this.state.states = [];
     const city = event.target.value.toUpperCase();                      //set city name
+    this.setState ({
+      cityName: city
+    })
     var stateAndZipcodes = [];
 
     if(city.length > 2){
@@ -88,6 +115,7 @@ class App extends Component {
           })
         });*/
       })
+      .then(this.getState)
       .catch((err) => {
         this.setState({
           zipCodes: [
@@ -104,13 +132,6 @@ class App extends Component {
         });
       })
     }
-    this.setState ({
-      cityName: city
-    })
-    /*console.log(stateAndZipcodes);
-      this.setState({
-        statesWithZipcode: stateAndZipcodes.map((s) => <States data={s}/>)
-      })*/
   }
 
   render() {
@@ -129,7 +150,11 @@ class App extends Component {
         </div>
 
         <div>
+          <h4><b> Zip codes: </b></h4>
           {this.state.zipCodes}
+          <hr />
+          <h4><b>States: </b></h4>
+          {this.state.states}
         </div>
       </div>
     );
