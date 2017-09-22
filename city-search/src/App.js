@@ -69,7 +69,7 @@ class StateList extends Component {
         </div>
       );
     } else {
-      return <div>hi</div>;
+      return <div></div>;
     }
   }
 }
@@ -136,12 +136,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-          <CitySearchField onChange={this.handleChange} />
-          <StateList states={this.state.stateZipcodeMap} /> 
+        <CitySearchField onChange={this.handleChange} />
+        <StateList states={this.state.stateZipcodeMap} /> 
       </div>
     );
   }
