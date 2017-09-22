@@ -1,3 +1,7 @@
+.App {
+  text-align: center;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -19,11 +23,10 @@
   to { transform: rotate(360deg); }
 }
 
-.row {
-  padding-top: 10px;
-  padding-bottom: 10px;
+#zipCodeBox {
+  padding: 5px 0;
 }
 
-#zipSearchBox {
+#citySearchBox {
   margin: 20px 0;
 }
