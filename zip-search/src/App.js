@@ -11,7 +11,11 @@ function City(props) {
             </div>
             <div className="panel-body">
                 <ul>
+                    <li>State: {props.data.State}</li>
+                    <li>Country: {props.data.Country}</li>
+                    <li>Coordinates: ({props.data.Lat} , {props.data.Long})</li>
                     <li>Est. population: {props.data.EstimatedPopulation} </li>
+                    <li>Taxes Filed: {props.data.TaxReturnsFiled}</li>
                 </ul>
             </div>
         </div>
@@ -43,14 +47,18 @@ class App extends Component {
         if (zip.length === 5){
             console.log(`Fetching http://ctp-zip-api.herokuapp.com/zip/${zip}`)
             fetch(`http://ctp-zip-api.herokuapp.com/zip/${zip}`).then((response) => {
-                return response.json();
+                if (response.status === 200)
+                    return response.json();
             })
             .then((jsonBody) => {
                 console.log(jsonBody);
                 const cityComps = jsonBody.map((city) => <City data={city} /> );
                 this.setState({
                     cities: cityComps
-                })
+                });
+            })
+            .catch((err) => {       //Catch errors in Promise chain
+                console.log("Try a different zipcode.")
             });
         }
         this.setState({
@@ -64,7 +72,9 @@ class App extends Component {
                 <div className="App-header">
                     <h2>Zip Code Search</h2>
                 </div>
-                <ZipSearchField handleChange={this.zipCodeChanged} value={this.state.zipCode}/>
+                <div className="center">
+                    <ZipSearchField handleChange={this.zipCodeChanged} value={this.state.zipCode}/>                    
+                </div>
                 <div>
                     { this.state.cities.length===0 ? (<p> No Results</p>): this.state.cities}
                 </div>
