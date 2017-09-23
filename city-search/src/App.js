@@ -9,15 +9,11 @@ function City(props) {
       <div className = "col-xs-12">
         <div className = "panel panel-default">
           <div className = "panel-heading">
-            <h3 className = "panel-title"> {props.data.LocationText}</h3>
+            <h3 className = "panel-title"> {props.city}</h3>
             </div>
             <div className = "panel-body">
              <ul>
-              <li>State: {props.data.State}</li>
-              <li>Region: {props.data.WorldRegion}</li>
-              <li>Location: ({props.data.Lat}), ({props.data.Long})</li>
-              <li>Estimated Population: {props.data.EstimatedPopulation}</li>
-              <li>Total Wages: { "$ " + props.data.TotalWages}</li>
+              <li>{props.data}</li>
             </ul>
           </div>
           </div>
@@ -26,12 +22,12 @@ function City(props) {
     </div>);
 }
 
-function ZipSearchField(props) {
+function citySearchField(props) {
   return (<div className="searchinput">
     <div className = "col-xs-12 form-inline">
-      <label htmlFor = "zip"> Zip Code: </label>
+      <label htmlFor = "city"> City: </label>
       <input className="form-control" type="text"
-      placeholder="Try 10016"
+      placeholder="SPRINGFIELD"
       onChange={props.handleSearch}
       />
       </div>
@@ -45,23 +41,23 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      zipCode: "",
-      cities: [],
+      city: "",
+      zipCode: [],
     }
-     this.zipCodeUpdate = this.zipCodeUpdate.bind(this);
+     this.CityUpdate = this.CityUpdate.bind(this);
 
       }
 
-      zipCodeUpdate(i){
-        const zip = i.target.value;
+      CityUpdate(i){
+        const cityName = i.target.value.toUpperCase();
 
         this.setState({
 
-          zipCode: zip,
+          city: cityName,
         })
 
-        if(zip.length === 5){
-          fetch("http://ctp-zip-api.herokuapp.com/zip/" + zip)
+        if(cityName.length != 0){
+          fetch("http://ctp-city-api.herokuapp.com/city/" + cityName)
           .then ((response) => {
             if(response.ok){
               return response.json();
@@ -70,23 +66,23 @@ class App extends Component {
             }
           })
         .then((jsonResponse) => {
-          const cities = jsonResponse.map((city) =>{
-            return <City data= {city} key = {city.RecordNumber} />;
+          const zipList = jsonResponse.map((zips) =>{
+            return <City data= {zips} />;
         });
 
-        this.setState({ cities: cities,});
+        this.setState({ zipCode: zipList,});
 
       })
       .catch((e) => {
         this.setState({
-          cities: [],
+          zipCode: [],
         });
         console.log("Error catch: " + e);
       });
         }
         else {
           this.setState({
-            cities: [],
+            zipCode: [],
           });
         }
       }
@@ -97,17 +93,16 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Zip Code Search</h2>
+          <h2>City ZipCode Search</h2>
         </div>
 
         <div className="container-fluid">
         <div className = "row">
           <div className="col-sm-6 col-sm-offset-4">
-            <ZipSearchField
-              handleSearch={this.zipCodeUpdate} />
+            <citySearchField city={this.state.city}
+              handleSearch={this.CityUpdate} />
               {
-                this.state.cities.length > 0 ? this.state.cities :
-                <div className="col-sm-offset-2"> Enter 5-digit Zip Code </div>
+                this.state.ZipCode
               }
               </div>
               </div>
