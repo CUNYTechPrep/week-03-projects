@@ -23,3 +23,8 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.center{
+  margin: 0 auto;
+  width: 300px;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 function getCity(zipCode){
@@ -7,63 +7,64 @@ function getCity(zipCode){
   .then(response => response.json());
 }
 
-/**
- * This function creates the HTML structure of the resulting zip code query 
- * @param {*} props 
- */
+// This functional component renders the HTML structure that
+// accepts the zipcode input from the user
+function ZipSearchField(props) {
+  return (
+  <div className="row center">
+    <form>
+      <label>Zip Code: </label>
+      <input type="text" maxLength="5" onChange={props.onChange}/>
+    </form>
+  </div>);
+}
+
+// This functional component creates the HTML structures based on the
+// array of JSON objects passed to its `props.result` property
 function City(props) {
   const result = props.result;
   return (
-    <div>
+    <div className="row center">
 
       {result.map((city, index) => {
         return (
-          <ul key={index}>
-            <ol>City: {city.City}</ol>
-            <ol>State: ({city.Lat}, {city.Long})</ol>
-            <ol>State: {city.State}</ol>
-            <ol>Population (estimated): {city.EstimatedPopulation}</ol>
-            <ol>Total Wages: {city.TotalWages}</ol>
-          </ul>
+          <div key={index} className="panel panel-default text-left">
+            <div className="panel-heading"><span className="text-capitalize">{city.City.toLowerCase()}</span>, {city.State} </div>
+            <div className="panel-body">
+              <ul>
+                <li>State: {city.State}</li>
+                <li>Location: ({city.Lat}, {city.Long})</li>
+                <li>Population (estimated): {city.EstimatedPopulation}</li>
+                <li>Total Wages: {city.TotalWages}</li>
+              </ul>
+            </div>
+          </div>
         );
         })
-      };
+      }
 
     </div>
   );
 }
 
-/**
- * This function renders the Zip Search field where user can enter a valid zipcode
- * @param {*} props Takes in a list of props from the parent component
- * @todo Add the necessary body for the code to work 
- */
-function ZipSearchField(props) {
-  // const zipCode = this.props.zipCode;
-  return (
-  <div>
-    Zip Code: <input type="text"/>
-  </div>);
-}
-
-
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      zipCode: "11377",
       locations: [],
     };
   }
 
-  // This life-cycle hook handles the logic of pulling data from the server
-  componentDidMount(){
-    if (this.state.zipCode.length !== 0){
-      getCity(this.state.zipCode)
+  // This event handler checks if the input entered to the input field passes the simple validation test
+  // and if so, execute the async method to fetch the data from the server with the validated zipcode 
+  // entered. The fetched data is then set to the `locations` state of the component to trigger re-render
+  handleZipChange = (event) => {
+    let input = event.target.value;
+    if (parseInt(input, 10).toString().length === 5){
+      getCity(input)
       .then(response => {
-        this.setState({locations : response})
+        this.setState({locations : response});
       })
-      // .then( _ => console.log(this.state.locations))
       .catch(err => console.log(err));
     }
   }
@@ -74,9 +75,11 @@ class App extends Component {
         <div className="App-header">
           <h2>Zip Code Search</h2>
         </div>
-        <ZipSearchField  />
-        <div>
-          <City result={this.state.locations} />
+
+        <ZipSearchField onChange={this.handleZipChange}/>
+
+        <div className="text-center">
+          <City result={this.state.locations}/>
         </div>
       </div>
     );
