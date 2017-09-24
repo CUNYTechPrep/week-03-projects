@@ -37,7 +37,7 @@
 	justify-content: center;
 }
 
-.city {
+.result {
 	border: 1px hsl(0, 0%, 90%) solid;
 	border-radius: .5rem;
 	width: 40rem;
