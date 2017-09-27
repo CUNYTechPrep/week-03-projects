@@ -44,7 +44,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.fetchZipCode = this.fetchZipCode.bind(this);
+    this.fetchCities = this.fetchCities.bind(this);
   }
 
   handleChange(event) {
@@ -54,12 +54,12 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    this.fetchZipCode(this.state.value);
+    this.fetchCities(this.state.value);
     
     event.preventDefault();
   }
 
-  fetchZipCode(zip) {
+  fetchCities(zip) {
     const API = `http://ctp-zip-api.herokuapp.com/zip/${zip}`
     // GET JSON
     fetch(API)
