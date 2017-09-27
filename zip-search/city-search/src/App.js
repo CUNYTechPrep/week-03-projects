@@ -4,10 +4,12 @@ import './App.css';
 
 function Zip(props) {
   return (
-    <div className = "panel panel-default">
+    <div>
     
       <div className = "panel-heading">
-      {props.data}
+        {props.data}        
+        <div className = "panel-body">
+        </div>
       </div>
 
   
@@ -17,7 +19,7 @@ function Zip(props) {
 
 function CitySearchField(props) {
   return (
-      <div className="group-form text-center">
+      <div className="col-md-6 col-md-offset-5 text-center">
         <label><b>City Name:</b></label>
         <input type="text" id="citySearchBox" placeholder="Try SPRINGFIELD" onChange={props.handleChange} value={props.value} />
       </div>
@@ -29,6 +31,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      State: [],
       cityName: "",
       zipCodes: []
     }
@@ -42,20 +45,23 @@ class App extends Component {
       city: city
     });
   
+    if(city.length >= 5){
       fetch("http://ctp-zip-api.herokuapp.com/city/" + city)
-        .then((response) => {
+       
+      .then((response) => {
           return response.json();
-        }).then((jsonBody) => {
-          const zipCodes = jsonBody.map((data) => <Zip data={data} />);
+      
+        }).then((jsonBody) => {          
+          const zipCode = jsonBody.map((zip) => <Zip data={zip} />);
 
           this.setState({
-            zipCodes: zipCodes
+            zipCodes: zipCode
           });
         }).catch((err) => {
 
         });
 
-
+      }
         this.setState({
           cityName: city
         });
