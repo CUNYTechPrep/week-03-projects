@@ -3,3 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.col-md-4, .col-md-offset-5 {
+  margin-top: 20px;
+}
+
+.centered {
+  width: 400px;
+  margin: 0 auto 0 auto;
+}
+
+.margin-top-80 {
+  margin-top: 80px;
+}
