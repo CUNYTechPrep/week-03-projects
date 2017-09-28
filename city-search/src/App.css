@@ -18,6 +18,30 @@
   font-size: large;
 }
 
+.city-field {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.panel-default {
+  max-width: 200 px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:  20px;
+}
+
+.panel {
+  max-width: 300px;
+
+}
+
+.panel-body{
+    margin: auto;
+    max-width: 400px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
