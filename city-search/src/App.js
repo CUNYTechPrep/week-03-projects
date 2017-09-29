@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 
-
-function City(props) {
+function Zip(props) {
   return (
     <div className="row">
       <div className="col-xs-12">
@@ -12,10 +12,7 @@ function City(props) {
           </div>
           <div className="panel-body">
             <ul>
-              <li>State: {props.data.State}</li>
-              <li>Location: ({props.data.Lat}, {props.data.Long})</li>
-              <li>Population (estimated): {props.data.EstimatedPopulation}</li>
-              <li>Total Wages: {props.data.TotalWages}</li>
+              <li>Zip: {props.data.Zip}</li>
               {/* You can add any other data points you want here */}
             </ul>
           </div>
@@ -25,96 +22,87 @@ function City(props) {
   );
 }
 
-function ZipSearchField(props) {
+function CitySearchField(props) {
   return (
     <div className="row">
       <div className="col-xs-12 form-inline">
-        <label htmlFor="zip">Zip Code: </label>
+        <label htmlFor="city">City: </label>
         <input
           type="text"
-          id="zip"
+          id="city"
           className="form-control"
-          value={props.zipValue}
+          value={props.city}
           onChange={props.handleChange}
-          placeholder="Try 10016" />
+          placeholder="Try New York" />
       </div>
     </div>
   );
 }
 
-
-
 class App extends Component {
-  constructor() {
+
+	constructor() {
     super();
     this.state = {
-      zipValue: "",
-      cities: [],
+      zipValues: [],
+      city: "",
     }
 
-    // Don't forget to bind the event handler
-    this.zipValueChanged = this.zipValueChanged.bind(this);
+    this.cityValueChanged = this.cityValueChanged.bind(this);
   }
 
-  zipValueChanged(event) {
-    const zip = event.target.value;
+  cityValueChanged(event) {
+    const name = event.target.value;
 
     this.setState({
-      zipValue: zip,
+      city: name,
     })
 
-    if(zip.length === 5) {
-      fetch('http://ctp-zip-api.herokuapp.com/zip/'+zip)
+    if(name.length > 0) {
+      fetch('http://ctp-zip-api.herokuapp.com/city/'+name.toUpperCase())
         .then((response) => {
           if(response.ok) {
             return response.json();
           } else {
             return [];
           }
-          /*
-            if we were to just return response.json() here
-            then an exception will be thrown if there is an 
-            error, and the catch() function below would execute.
-            The exception occurs because the API does not return 
-            a proper json body when a 404 occurs.
-          */
         })
         .then((jsonResponse) => {
-          const cities = jsonResponse.map((city) => {
-            return <City data={city} key={city.RecordNumber} />;
+          const zipValues = jsonResponse.map((zip) => {
+            return <Zip data={zip} />;
           });
 
           this.setState({
-            cities: cities,
+            zipValues: zipValues,
           });
         })
         .catch((e) => {
           this.setState({
-            cities: [],
+            zipValues: [],
           });
           console.log("In catch: " + e);
         });
     } else {
       this.setState({
-        cities: [],
+        zipValues: [],
       });
     }
   }
 
-  render() {
+	render() {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Zip Code Search</h2>
+          <h2>City Search</h2>
         </div>
         <div className="container-fluid">
           <div className="row">
             {/* the following classes centers the 6 columns */}
             <div className="col-sm-6 col-sm-offset-3">
-              <ZipSearchField
-                zipValue={this.state.zipValue}
-                handleChange={this.zipValueChanged} />
-              {this.state.cities.length > 0 ? this.state.cities : <div>No Results</div>}
+              <CitySearchField
+                city={this.state.city}
+                handleChange={this.cityValueChanged} />
+              {this.state.zipValues.length > 0 ? this.state.zipValues : <div>No Results</div>}
             </div>
           </div>
         </div>
