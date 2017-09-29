@@ -12,7 +12,7 @@ function Zip(props) {
           </div>
           <div className="panel-body">
             <ul>
-              <li>Zip: {props.data.Zip}</li>
+              <li>Zip: {props.data}</li>
               {/* You can add any other data points you want here */}
             </ul>
           </div>
