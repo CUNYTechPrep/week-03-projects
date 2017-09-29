@@ -31,7 +31,7 @@ class App extends Component {
     this.state = {
       city: "",
       zipCodes: [],
-    }
+    } 
     this.handleChange = this.handleChange.bind(this);
   }
 
