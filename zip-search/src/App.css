@@ -23,3 +23,30 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.input-area {
+  margin: 15px 15px;
+}
+
+.box-text {
+  width:90px;
+}
+
+.type-button {
+  height: 35px;
+  width: 250px;
+  margin: 10px 0px 0px 35px;
+}
+
+.zip-table {
+  display: block;
+}
+
+.slot {
+  text-align: center;
+  background: #DDDDDD;
+  width: 150px;
+  height: 50px;
+  padding-top: 15px;
+  margin-left: 5px;
+}
