@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function City(props) {
+  console.log(props);
   if (props.data === "No Results")
   {
     return (<div className="text-center"> No Results </div>)
@@ -12,21 +13,12 @@ function City(props) {
     <div className="col-sm-6">
       <div className="panel panel-default">
         <div className="panel-heading">
-          {props.data.City}, {props.data.State}
+          Zip Code
         </div>
         <div className="panel-body">
           <ul>
             <li>
-              State: {props.data.State}
-            </li>
-            <li>
-              Location: ({props.data.Lat}, {props.data.Long})
-            </li>
-            <li>
-              Population: {props.data.EstimatedPopulation}
-            </li>
-            <li>
-              Total Wages: {props.data.TotalWages}
+              {props.data}
             </li>
           </ul>
         </div>
@@ -36,21 +28,13 @@ function City(props) {
     );
 }
 
-function ZipSearchField(props) {
+function CitySearchField(props) {
   return (
     <div className="text-center">
-      <label>Zip Code: </label>
-      <input type="number" placeholder="Try 10016" onChange={props.handleChange} name={props.value} />
+      <label>City: </label>
+      <input type="text" onChange={props.handleChange} name={props.value} />
     </div>
   );
-}
-
-function SetResponse(response) {
-  let res = response;
-  if (response === "")
-  {
-    return res;
-  }
 }
 
 class App extends Component {
@@ -58,21 +42,21 @@ class App extends Component {
    constructor() {
     super();
     this.state = {
-      zipCode: "",
-      cities: ["No Results"],
+      city: "",
+      zipcodes: ["No Results"],
     }
-    this.zipCodeChange = this.zipCodeChange.bind(this);
+    this.zipCodeSearch = this.zipCodeSearch.bind(this);
   }
 
-  zipCodeChange(event) {
-    const zip = event.target.value;
+  zipCodeSearch(event) {
+    const city = event.target.value.toUpperCase();;
     this.setState({
-      zipCode: zip,
+      zipCode: city,
     });
 
-      fetch("http://ctp-zip-api.herokuapp.com/zip/"+zip)
+      fetch("http://ctp-zip-api.herokuapp.com/city/"+city)
       .then((response) => {
-        if (response.ok && zip.length === 5){
+        if (response.ok){
           return response.json();
         }
         else {
@@ -84,8 +68,8 @@ class App extends Component {
           return <City data={c} />;
         });
         this.setState({
-          zipCode: zip,
-          cities: cityComps,
+          city: city,
+          zipcodes: cityComps,
         });
       })
   }
@@ -94,11 +78,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Zip Code Search</h2>
+          <h2>City Search</h2>
         </div>
-        <ZipSearchField handleChange ={this.zipCodeChange} value ={this.state.zipCode} />
+        <CitySearchField handleChange ={this.zipCodeSearch} value ={this.state.city} />
         <div>
-          {this.state.cities}
+          {this.state.zipcodes}
         </div>
       </div>
     );
