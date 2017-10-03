@@ -1,0 +1,505 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"monthly",
+				"monthlyRate"
+			],
+			[
+				"month",
+				"monthlyRate"
+			],
+			[
+				"arr",
+				"arrayToList"
+			],
+			[
+				"rev",
+				"reverseArrayIn"
+			],
+			[
+				"karen",
+				"KarenFeature"
+			],
+			[
+				"kare",
+				"KarenToy"
+			],
+			[
+				"G",
+				"GeorginaToy"
+			],
+			[
+				"g",
+				"georgina"
+			],
+			[
+				"d",
+				"DudleyFeature"
+			],
+			[
+				"dud",
+				"DudleyToy"
+			],
+			[
+				"And",
+				"AndrewFeature"
+			],
+			[
+				"andr",
+				"Andrew_Toy"
+			],
+			[
+				"du",
+				"dudley_feature"
+			],
+			[
+				"dudle",
+				"dudley"
+			],
+			[
+				"dudl",
+				"dudley_feature"
+			],
+			[
+				"karen_",
+				"karen_toy"
+			],
+			[
+				"dudley_",
+				"dudley_toy"
+			],
+			[
+				"andrew_",
+				"andrew_toy"
+			],
+			[
+				"geor",
+				"georgina_feature"
+			],
+			[
+				"a",
+				"andrew_feature"
+			],
+			[
+				"geo",
+				"georginaToy"
+			],
+			[
+				"andrew",
+				"andrewToy"
+			],
+			[
+				"and",
+				"andrew_feature"
+			],
+			[
+				"get",
+				"get_object_or_404"
+			],
+			[
+				"dis",
+				"displayInOrder"
+			],
+			[
+				"node",
+				"nodeptr"
+			],
+			[
+				"maximum",
+				"maximumEven"
+			],
+			[
+				"maxi",
+				"maximumEven"
+			],
+			[
+				"label",
+				"labelOrigin"
+			],
+			[
+				"info",
+				"infowindow"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"fone",
+				"font-size"
+			],
+			[
+				"Decim",
+				"DecimalField"
+			],
+			[
+				"dish",
+				"dish_posts"
+			],
+			[
+				"ge",
+				"geolocation"
+			],
+			[
+				"Chef",
+				"ChefName"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"last_filter": "Package Control: Inst",
+		"selected_items":
+		[
+			[
+				"Package Control: Inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Add Repository"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"ls",
+			"python3 manage.py runserver"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/waqar/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/waqar/Desktop/Data Structures/First Project/stats.cxx",
+		"/Users/waqar/Documents/ctp/week-02-projects/react-fb-tictactoe/src/TicTacToe/index.js",
+		"/Users/waqar/Documents/test..html",
+		"/Users/waqar/Documents/ctp/week-01-projects/index.html",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/js/ratefinder.js",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/js/rate-service-mock.js",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/webpack.config.js",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/ratefinder.html",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/index.html",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/js/mortgage.js",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/package.json",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/js/mortgage2.js",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/js/main.js",
+		"/Users/waqar/Documents/ctpes6/es6-tutorial/build/main.bundle.js",
+		"/Users/waqar/Desktop/JSPrac.js",
+		"/Users/waqar/Desktop/Result_Detail.htm",
+		"/Users/waqar/Desktop/Python/scrape.py",
+		"/Users/waqar/Downloads/Boinx.FotoMagico.v4.4.2.MacOSX.Incl.Keymaker-CORE/CORE.NFO",
+		"/Users/waqar/Desktop/ffmpeg-3.3.1/version.sh",
+		"/Users/waqar/Desktop/solve.pl",
+		"/Users/waqar/Desktop/testlist.py",
+		"/Users/waqar/Desktop/GA4.py",
+		"/Users/waqar/Desktop/GA3.py",
+		"/Users/waqar/Desktop/GA2.py",
+		"/Users/waqar/Desktop/GA.py",
+		"/Users/waqar/Desktop/bbqlist.txt",
+		"/Users/waqar/Desktop/NineMorris.py",
+		"/Users/waqar/Desktop/JavaScript-Snake-master/js/snake.js",
+		"/Users/waqar/Documents/PrologFiles/db.pl",
+		"/Users/waqar/Documents/SkeithProj/csc103-projects/p4/shuf.cpp",
+		"/Users/waqar/Desktop/files/README",
+		"/Users/waqar/Documents/Python-Shoot/platformer2.py",
+		"/Users/waqar/Documents/Scheme-Proj/Sudoku Solver /README.md",
+		"/Users/waqar/Documents/Scheme-Proj/Syntax Checker/README.md",
+		"/Users/waqar/Documents/Scheme-Proj/README.md",
+		"/Users/waqar/Documents/README.md",
+		"/Users/waqar/Documents/IntroProj/mysite/polls/views.py",
+		"/Users/waqar/Documents/IntroProj/mysite/polls/admin.py",
+		"/Users/waqar/Documents/IntroProj/mysite/polls/models.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/scripts/manage_dummy_data.py",
+		"/Users/waqar/Desktop/AI Search algorithms.txt",
+		"/Users/waqar/Documents/IntroProj/mysite/mysite/settings.py",
+		"/Users/waqar/Documents/IntroProj/mysite/mysite/urls.py",
+		"/Users/waqar/Documents/IntroProj/mysite/polls/urls.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/ngs/views.py",
+		"/Users/waqar/Documents/IntroProj/mysite/polls/tests.py",
+		"/Users/waqar/Documents/IntroProj/mysite/polls/apps.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/ngs/settings.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/ngs/wsgi.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/ngs/urls.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/accounts/models.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/accounts/middleware.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/forms.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/apps.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/accounts/admin.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/admin.py",
+		"/Users/waqar/Documents/AI questions",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/manage.py",
+		"/Users/waqar/Desktop/probabliity.cpp",
+		"/Users/waqar/Desktop/scrap2.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/accounts/forms.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/ngs/templates/ngs/index.html",
+		"/Users/waqar/Downloads/unslider-master/readme.md",
+		"/Users/waqar/Downloads/Noor Academy/index 2.html",
+		"/Users/waqar/Downloads/Noor Academy/index.html",
+		"/Users/waqar/Desktop/Source.cp",
+		"/Users/waqar/Desktop/ngs/django-project/accounts/migrations/0003_chefpermissionsrequest.py",
+		"/Users/waqar/Desktop/test.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/includes/google-maps-edit-request.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/orders-requests.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/chef_history.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/includes/google-maps-past-dish-posts.html",
+		"/Users/waqar/Documents/NGSProj/ngs/gen-site-map.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/includes/google-maps-edit-post.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/includes/google-maps-create-order.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/urls.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/includes/google-maps-dish-suggestions.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/models.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/accounts/templates/accounts/includes/google-maps-signup-page.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/requests.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/includes/google-maps-requests-page.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/create_post.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/includes/google-maps-dish-posts.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/views.py",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/edit_request.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/dish_suggestions.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/edit_post.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/posts.html",
+		"/Users/waqar/Desktop/dishpostgenerator.py",
+		"/Users/waqar/Documents/ISSUES WITH WEBSITE.txt",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/dishes/templates/dishes/includes/google-maps-signup-page.html",
+		"/Users/waqar/Documents/NGSProj/ngs/django-project/config.py",
+		"/Users/waqar/Desktop/Order Complaints",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/scripts/manage_dummy_data.py",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/dishes/models.py",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/dishes/templates/dishes/posts.html",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/dishes/templates/dishes/dish_suggestions.html",
+		"/Users/waqar/Downloads/cigsmokerpthread.c",
+		"/Users/waqar/Downloads/For dishes, place the marker and put a title on th",
+		"/Users/waqar/Downloads/oslab.txt",
+		"/Users/waqar/Downloads/smoker.c",
+		"/Users/waqar/Downloads/sem.h",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/dishes/templates/dishes/includes/google-maps-dish-posts.html",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/ngs/templates/ngs/index.html",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/static/css/homePage.css",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/static/css/header.css",
+		"/Users/waqar/Downloads/Noor Academy/assets/css/main.css",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/accounts/templates/accounts/account.html",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/static/css/chef_per.css",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/accounts/templates/accounts/user_confirm_terminate.html",
+		"/Users/waqar/Documents/anotherpract/ngs/django-project/accounts/models.py",
+		"/Users/waqar/Documents/projpract/ngs/gen-site-map.py",
+		"/Users/waqar/Documents/projpract/ngs/django-project/dishes/templates/dishes/includes/google-maps-signup-page.html",
+		"/Users/waqar/Documents/projpract/ngs/django-project/dishes/templates/dishes/includes/google-maps-edit-request.html",
+		"/Users/waqar/Documents/projpract/ngs/django-project/dishes/templates/dishes/includes/google-maps-edit-post.html",
+		"/Users/waqar/Documents/projpract/ngs/django-project/dishes/templates/dishes/includes/google-maps-dish-posts.html",
+		"/Users/waqar/Documents/projpract/ngs/django-project/accounts/models.py",
+		"/Users/waqar/Documents/projpract/ngs/django-project/accounts/views.py",
+		"/Users/waqar/Desktop/test.cpp",
+		"/Users/waqar/Documents/projpract/ngs/django-project/scripts/manage_dummy_data.py",
+		"/Users/waqar/myenv/lib/python3.5/site-packages/pkg_resources/_vendor/packaging/__about__.py",
+		"/Users/waqar/Documents/projpract/ngs/django-project/accounts/templates/accounts/signup.html",
+		"/Users/waqar/Documents/projpract/ngs/django-project/dishes/templates/dishes/create_post.html",
+		"/Users/waqar/Documents/projpract/ngs/django-project/accounts/templates/accounts/includes/google-maps-signup-page.html",
+		"/Users/waqar/Documents/projpract/ngs/django-project/dishes/templates/dishes/includes/google-maps-create-order.html",
+		"/Users/waqar/Documents/projpract/ngs/django-project/dishes/templates/dishes/posts.html",
+		"/Users/waqar/Desktop/List of gifts for Pakistan.txt"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"var",
+			"FAIL",
+			"Triples",
+			"with",
+			"got",
+			"Andrew_Toy",
+			"select",
+			"slection",
+			"goal",
+			"mutat",
+			"georgina_",
+			"Andrew_feature",
+			"andrew_",
+			"dudley_",
+			"karen_",
+			"georgina_toy",
+			"dudley_toy",
+			"andrew_toy",
+			"sol",
+			".png",
+			"\"platforms.png",
+			"platforms.png",
+			"image",
+			"while",
+			"\t\t    \n",
+			"res",
+			"rres",
+			"lres",
+			"res",
+			"dish\": 24",
+			"dish\": 3",
+			"dish posts",
+			"href",
+			"pthread",
+			"});",
+			"%}",
+			"c.",
+			"dishes",
+			"c.",
+			"chef_id",
+			"dishpos",
+			"color",
+			"form ",
+			"form",
+			"%;",
+			"600px",
+			"scr",
+			"container",
+			"footer",
+			"sawaira afza",
+			" afza",
+			" Ifza\\n ",
+			" Afza\\n ",
+			"sawaira Afza",
+			"#46beea",
+			"color",
+			"fa-",
+			"md",
+			"engage"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "README.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 125.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
