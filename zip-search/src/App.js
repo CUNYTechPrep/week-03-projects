@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-
+/*
 function City(props) {
 	function numberWithCommas(x) {
 		console.log(x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
@@ -25,15 +24,60 @@ function ZipSearchField(props) {
 			<input type="text" placeholder="Try 10016" value={props.value} onChange={ (e) => { props.handleChange(e); } } />
 			</div>);
 }
+*/
 
+function City(props) {
+  return (<div className="panel panel-default">
+			<div className="panel-heading">{props.data}</div>  
+			<div className="panel-body">
+			</div>
+		</div>);
+}
+
+function CitySearchField(props) {
+	return (<div>
+			<input type="text" placeholder="Try Brooklyn" value={props.value} onChange={ (e) => {props.handleChange(e);} } onKeyPress={(e) => {(e.key === 'Enter' ? props.submit(e) : null)}} />
+           </div>);
+}
 class App extends Component {
   constructor() {
     super();
     this.state = {
       zipCode: '',
-      cities: []
+      cityCode: '',
+      cities: [],
+      zips: [],
     };
 	this.getZip = this.getZip.bind(this); 
+	this.getCity = this.getCity.bind(this); 
+	this.getCitySubmit = this.getCitySubmit.bind(this); 
+  }
+  getCitySubmit(e){
+    var city = this.state.cityCode;
+    var url = "http://ctp-zip-api.herokuapp.com/city/"+city;
+    console.log(this.state.cityCode);
+    fetch(url)
+		.then( (responce) => {
+			console.log(responce);
+			return responce.json();
+		}).catch( (err) =>{
+            return;
+        }).then( (jsonData) => {
+			var citiesJson = jsonData.map( (obj) =>{
+				console.log(obj);
+				return <City data={obj} />;
+			});
+			this.setState({
+				cities: citiesJson,
+			});
+		});
+  }
+  getCity(e) {
+    if( typeof e === "undefined") return;
+    var city = e.target.value;
+    this.setState({
+		cityCode: city.toUpperCase(), 
+    });
   }
   getZip(e) {
 	var zip = e.target.value;
@@ -64,7 +108,7 @@ class App extends Component {
 			</div>
 			<div className="container">
 				<label><h2> Zip Code: </h2></label>
-        		<ZipSearchField value={this.state.zipCode} handleChange = {this.getZip} />
+        		<CitySearchField value={this.state.cityCode} handleChange = {this.getCity} submit = {this.getCitySubmit} />
 				{this.state.cities}
         	</div>
      </div>
