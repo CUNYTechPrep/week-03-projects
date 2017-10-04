@@ -4,13 +4,19 @@ import './App.css';
 
 
 function City(props) {
-  return (<div></div>);
+  return (<div>No Results</div>);
 }
 
 function ZipSearchField(props) {
-  return (<div></div>);
+  return (
+    <div>
+      <label>
+        Zip Code:
+        <input type='text' />
+      </label>
+    </div>
+  );
 }
-
 
 class App extends Component {
   render() {
@@ -19,9 +25,10 @@ class App extends Component {
         <div className="App-header">
           <h2>Zip Code Search</h2>
         </div>
-        <ZipSearchField />
-        <div>
-          <City />
+        <div className='zip-search-field'>
+          <ZipSearchField />
+        </div>
+        <div className='city'>
           <City />
         </div>
       </div>
