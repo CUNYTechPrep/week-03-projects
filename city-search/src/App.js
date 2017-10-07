@@ -10,21 +10,21 @@ function City(props) {
 
     }
  */
-  return (<div>{props.value}</div>);
+  return (<div>{props.value}</div>);zz
 }
 
 function ZipSearchField(props) {
   return (
     <div className='zip-search-field'>
-      <label>
+      <form>
         Zip Code:
         <input 
           type='text' 
           placeholder='Try 10016'
           value={props.value} 
-          onChange={props.handleChange}
+          //onChange={props.handleChange}  
         />
-      </label>
+      </form>
     </div>
   );
 }
@@ -33,7 +33,6 @@ class App extends Component {
   constructor(props) {
   	super(props);
   	this.state = {value: 'No Results'};
-
   	this.handleChange = this.handleChange.bind(this);
   }
 
@@ -56,4 +55,5 @@ class App extends Component {
   }
 }
 
+// index.js is importing this file
 export default App;
