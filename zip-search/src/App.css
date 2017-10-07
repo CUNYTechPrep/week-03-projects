@@ -24,12 +24,11 @@
   padding-bottom: 10px;
 }
 
-.zip-search-field {
+.App-body {
   padding-top: 20px;
+  text-align: left;
   text-align: center;
-  font-weight: bold;
 }
 
-.city {
-  text-align: center;
-}
+
+
