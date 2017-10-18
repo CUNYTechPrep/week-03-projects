@@ -4,7 +4,10 @@ import './App.css';
 
 
 function City(props) {
-  return (<div></div>);
+  return (<div>
+      {props.data}
+      {props.key}
+    </div>);
 }
 
 function ZipSearchField(props) {
@@ -19,7 +22,7 @@ function ZipSearchField(props) {
           value={props.zipValue}
           onChange={props.handleChange}
           placeholder="Try 11418" />
-      </div>        
+      </div>
     </div>
   );
 }
@@ -40,6 +43,38 @@ class App extends Component {
     const zip = event.target.value;
 
     this.setState({zipValue: zip});
+
+    if(zip.length === 5) {
+      fetch('http://ctp-zip-api.herokuapp.com/zip/' + zip)
+        .then(response => {
+          if(response.ok) {
+            return response.json();
+          }
+          else {
+            return [];
+          }
+        })
+        .then(jsonResponse => {
+          console.log(jsonResponse);
+          const cities = jsonResponse.map(city => {
+            return <City data={city} key={city.RecordNumber} />;
+          });
+
+          this.setState({
+            cities: cities,
+          });
+        })
+        .catch(e => {
+          this.setState({
+            cities: [],
+          });
+          console.log("In catch: " + e);
+        }); /*else {
+              this.setState({
+                cities: [],
+              });
+        } */
+    }
   }
 
   render() {
@@ -50,10 +85,12 @@ class App extends Component {
         </div>
         <div className="container-fluid">
           <div className="row">
-            <ZipSearchField 
-              zipValue={this.state.zipValue}
-              handleChange={this.zipValueChanged} />
-        
+            <div className="col-sm-6 col-sm-offset-3">
+              <ZipSearchField
+                zipValue={this.state.zipValue}
+                handleChange={this.zipValueChanged} />
+              {this.state.cities.length > 0 ? this.state.cities : <div>No Results</div>}
+            </div>
           </div>
         </div>
       </div>
