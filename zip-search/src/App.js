@@ -4,10 +4,25 @@ import './App.css';
 
 
 function City(props) {
-  return (<div>
-      {props.data}
-      {props.key}
-    </div>);
+  return (
+    <div className="row">
+      <div className="col-xs-12">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">{props.data.LocationText}</h3>
+          </div>
+          <div className="panel-body">
+            <ul>
+              <li>State: {props.data.State}</li>
+              <li>Location: ({props.data.Lat}, {props.data.Long})</li>
+              <li>Population (estimated): {props.data.EstimatedPopulation}</li>
+              <li>Total Wages: {props.data.TotalWages}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function ZipSearchField(props) {
@@ -32,7 +47,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      zipValue: "",
+      zipValue: "11418",
       cities: [],
     }
 
@@ -56,10 +71,12 @@ class App extends Component {
         })
         .then(jsonResponse => {
           console.log(jsonResponse);
+          // jsonResponse is an array of objects Array[obj1, obj2, ...]
           const cities = jsonResponse.map(city => {
             return <City data={city} key={city.RecordNumber} />;
           });
-
+          // cities is an array of React elements
+          console.log(cities);
           this.setState({
             cities: cities,
           });
@@ -69,11 +86,7 @@ class App extends Component {
             cities: [],
           });
           console.log("In catch: " + e);
-        }); /*else {
-              this.setState({
-                cities: [],
-              });
-        } */
+        });
     }
   }
 
