@@ -4,6 +4,23 @@
 
 The `create-react-app` utility helps you create new React projects easily. It handles generating a project, setting up babel, a dev server, and testing. It is the fastest way to get started developing react apps locally.
 
+You have two options for using `create-react-app`
+
+### Option 1: Use npx (_preferred_)
+
+Anytime you want to create a new React application, run:
+
+```
+npx create-react-app new-react-app
+```
+
+> By using `npx` you can run the create-react-app (cra) tool without installing it globally. This is the preferred option because cra is frequently updated, and in-frequently run on our machines. By using `npx`, we ensure we build each react project with the latest version of cra.
+
+> The `npx` tool can do a lot more, to learn more about it read: https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner 
+
+
+### Option 2: Install create-react-app globally
+
 You only have to install the utility once using the following commands:
 
 ```
@@ -13,13 +30,24 @@ npm install -g create-react-app
 
 > Note: the first command is to make sure you're running the most up to date version of npm.
 
+You now have a version of create-react-app locally installed and you can create new React projects by running:
+
+```
+create-react-app new-react-app
+```
+
 ## The Zip and City search API (ctp-zip-api)
 
 http://ctp-zip-api.herokuapp.com/
 
-For this week's projects we will be developing two simple applications, (1) the first app allows us to search for City names and details for a given zip code, and (2) the second app allows us to find all of Zip codes associated with a given City name.
+For this week's projects we will be developing two simple applications,
+
+1. the first app allows us to search for City names and details for a given zip code, 
+2. and the second app allows us to find all of Zip codes associated with a given City name.
 
 Below is a description of the relevant API endpoints for the projects:
+
+> This API has been prebuilt for this assignment. 
 
 ### `/zip/:zipcode` - find Cities associated with a zipcode
 
