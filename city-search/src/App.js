@@ -2,23 +2,13 @@ import React, { Component } from 'react';
 
 import './App.css';
 
-
-
-
-
-
-
-function ZipCode(props) {
+function Zip(props) {
 
   return (
-
-    
 
     <div className="row">
 
       <div className="col-xs-12">
-
-      
 
         <div className="panel panel-default">
 
@@ -61,7 +51,7 @@ function CitySearchField(props) {
 
   return (
 
-    <div class="row">
+    <div className="row">
 
       <div class="col-xs-12 form-inline">
 
@@ -73,7 +63,7 @@ function CitySearchField(props) {
 
           id="city"
 
-          class="form-control"
+          className="form-control"
 
           value={props.cityValue}
 
@@ -88,16 +78,6 @@ function CitySearchField(props) {
   );
 
 }
-
-
-
-
-
-
-
-
-
-
 class App extends Component {
 
   constructor() {
@@ -122,8 +102,6 @@ class App extends Component {
   }
 
 
-
-
   cityValueChanged(event) {
 
     const city = event.target.value;
@@ -133,14 +111,14 @@ class App extends Component {
 
     this.setState({
 
-      cityValue: city,
+      cityValue: city
 
     })
 
 
 
 
-    if(alert(typeof city)) { //if the value is a string then go on 
+    if(typeof(city) === 'string') { //if the value is a string then go on 
 
       fetch('http://ctp-zip-api.herokuapp.com/city/'+ city)
 
@@ -157,26 +135,20 @@ class App extends Component {
           }
 
           /*
-
             if we were to just return response.json() here
-
             then an exception will be thrown if there is an 
-
             error, and the catch() function below would execute.
-
             The exception occurs because the API does not return 
-
             a proper json body when a 404 occurs.
-
           */
 
         })
 
         .then((jsonResponse) => {
 
-          const zipValue = jsonResponse.map((city) => {
+          const zipValue = jsonResponse.map((zipValue) => {
 
-            return <zipValue data={city} key={city.RecordNumber} />;
+            return <Zip data={zipValue} key={zipValue.RecordNumber} />;
 
           });
 
@@ -215,9 +187,6 @@ class App extends Component {
 
   }
 
-
-
-
   render() {
 
     return (
@@ -242,7 +211,7 @@ class App extends Component {
 
                 cities={this.state.city}
 
-                handleChange={this.zipValueChanged} />
+                handleChange={this.cityValueChanged} />
 
               {this.state.cities.length > 0 ? this.state.zipValue : <div>No Results</div>}
 
@@ -259,8 +228,5 @@ class App extends Component {
   }
 
 }
-
-
-
 
 export default App;
