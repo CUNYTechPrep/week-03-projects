@@ -14,6 +14,24 @@
   font-size: large;
 }
 
+.zip-field{
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.panel-default {
+   max-width: 400px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 20px;
+}
+
+.panel-body {
+  margin: auto;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
