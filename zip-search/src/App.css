@@ -23,3 +23,19 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.tile{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px;
+}
+
+.tile-header{
+  background-color: lightblue;
+  padding: 2px;
+}
+
+.tile-body{}
+
+input{ border: 1px solid lightblue; }
